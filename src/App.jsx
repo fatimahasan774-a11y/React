@@ -1,23 +1,20 @@
-// import{Greeting} from "./Greaating"; 
-// import UserCard from "./custom"
-// import Blog from "./Blog"
-// import UserCard from "./custom";
-import UserCard from "./custom"
-function app(){
-const name ="fatima"
-const email = "fatimahsan@gamil.com"
+import { useState } from "react";
+const ToggleIsVisibility=()=> {
 
-const username = "abdalla"
- const emails = "abdallagmail.com" 
+const [isVisible, setIsVisible] = useState(true);
 
- const nio = "muha"
- const no = 'email.com'
+const toggle =()=>{
+setIsVisible(!isVisible)
+}
 
   return(
-    // <UserCard/>
-    // <Greeting/>
-    <UserCard name ={name} email={email} username={username} emails={emails} nio={nio} no={email.com}/>
+<div>
+  <p>The button is{isVisible ? "On" : "Off"}</p>
+  <button onClick={toggle}>turn {isVisible ? "Off" : "On"} </button>
+</div>  
   )
 }
 
-export default app;
+export default ToggleIsVisibility;
+
+
