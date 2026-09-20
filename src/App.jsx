@@ -1,20 +1,17 @@
-import { useState } from "react";
-const ToggleIsVisibility=()=> {
+import ShoppingCard from './shoppingCard';
+const App = ()=>{
 
-const [isVisible, setIsVisible] = useState(true);
+  return (
+  <>
+{/* <TodoList/> */}
+<ShoppingCard/>
 
-const toggle =()=>{
-setIsVisible(!isVisible)
+  </>
+ )
+  
+
 }
+export default App;
 
-  return(
-<div>
-  <p>The button is{isVisible ? "On" : "Off"}</p>
-  <button onClick={toggle}>turn {isVisible ? "Off" : "On"} </button>
-</div>  
-  )
-}
-
-export default ToggleIsVisibility;
 
 
