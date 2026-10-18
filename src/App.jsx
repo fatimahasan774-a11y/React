@@ -5,7 +5,8 @@
 // import UserList from "./UserList.jsx";
 // import ToggleMessage from './ToggleMessage';
 // import Login from './Login';
-import Button from './Button';
+// import Button from './Button';
+import  DoubleCounter  from './DoubleCounter'
 const App = ()=>{
 
   //   const users = [
@@ -15,7 +16,9 @@ const App = ()=>{
 
   return (
   <>
-  <Button/>
+  < DoubleCounter />
+
+  {/* <Button/> */}
   {/* <Login/> */}
   {/* <ToggleMessage/> */}
   {/* // <UserList users={users} />; */}
