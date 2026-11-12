@@ -67,30 +67,37 @@
 
 
 
-import { LanguageProvider, useLanguage } from "./LanguageContext";
+import { useState } from "react";
+import ShoppingCart from "./ShoppingCart";
 
-function SwitchButton() {
-  const { language, toggleLanguage } = useLanguage();
-
-  return (
-    <button onClick={toggleLanguage}>
-      {language === "en" ? "Switch to Spanish" : "Switch to English"}
-    </button>
-  );
-}
-
-function Greeting() {
-  const { language } = useLanguage();
-
-  return <h1>{language === "en" ? "Hello!" : "¡Hola!"}</h1>;
-}
+const products = [
+  { id: 1, name: "Widget", price: 19.99 },
+  { id: 2, name: "Gadget", price: 29.99 },
+];
 
 function App() {
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (product) => {
+    setCart((prev) => [...prev, { ...product, cartId: Date.now() + Math.random() }]);
+  };
+
+  const removeFromCart = (cartId) => {
+    setCart((prev) => prev.filter((item) => item.cartId !== cartId));
+  };
+
   return (
-    <LanguageProvider>
-      <SwitchButton />
-      <Greeting />
-    </LanguageProvider>
+    <div>
+      {products.map((product) => (
+        <div key={product.id}>
+          <p>{product.name}</p>
+          <p>Price: ${product.price.toFixed(2)}</p>
+          <button onClick={() => addToCart(product)}>Add to Cart</button>
+        </div>
+      ))}
+
+      <ShoppingCart cart={cart} onRemove={removeFromCart} />
+    </div>
   );
 }
 
