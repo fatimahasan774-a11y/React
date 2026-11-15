@@ -1,43 +1,14 @@
-// // import ShoppingCard from './shoppingCard'
-// // import MouseTracker from './MouseTracker'
-// // import CountdownTimer from './CountdownTimer';
-// // import Fruit from './Fruits'
-// // import UserList from "./UserList.jsx";
-// // import ToggleMessage from './ToggleMessage';
-// // import Login from './Login';
-// // import Button from './Button';
-// // import  DoubleCounter  from './DoubleCounter'
-// import TodoApp from  './TodoApp';
-// import MultiStepForm  from './MultiStepForm '
-// const App = ()=>{
+import ContactForm from "./contactForm";
 
-//   //   const users = [
-//   //   { id: 1, name: "Fatima", email: "fatima@gmail.com" },
-//   //   { id: 2, name: "Abdalla", email: "abdalla@gmail.com" },
-//   // ];
+const App = () => {
+  return (
+    <>
+      <ContactForm />
+    </>
+  );
+};
 
-//   return (
-//   <>
-//   <MultiStepForm />
-//   {/* <TodoApp/> 
-//   */}
-//   {/* < DoubleCounter /> */}
-
-//   {/* <Button/> */}
-//   {/* <Login/> */}
-//   {/* <ToggleMessage/> */}
-//   {/* // <UserList users={users} />; */}
-//   {/* <Fruit/> */}
-//   {/* <CountdownTimer/> */}
-// {/* <TodoList/> */}
-// {/* <ShoppingCard/> */}
-// {/* <MouseTracker/> */}
-//   </>
-//  )
-  
-
-// }
-// export default App;
+export default App;
 
 
 
@@ -67,38 +38,38 @@
 
 
 
-import { useState } from "react";
-import ShoppingCart from "./ShoppingCart";
+// import { useState } from "react";
+// import ShoppingCart from "./ShoppingCart";
 
-const products = [
-  { id: 1, name: "Widget", price: 19.99 },
-  { id: 2, name: "Gadget", price: 29.99 },
-];
+// const products = [
+//   { id: 1, name: "Widget", price: 19.99 },
+//   { id: 2, name: "Gadget", price: 29.99 },
+// ];
 
-function App() {
-  const [cart, setCart] = useState([]);
+// function App() {
+//   const [cart, setCart] = useState([]);
 
-  const addToCart = (product) => {
-    setCart((prev) => [...prev, { ...product, cartId: Date.now() + Math.random() }]);
-  };
+//   const addToCart = (product) => {
+//     setCart((prev) => [...prev, { ...product, cartId: Date.now() + Math.random() }]);
+//   };
 
-  const removeFromCart = (cartId) => {
-    setCart((prev) => prev.filter((item) => item.cartId !== cartId));
-  };
+//   const removeFromCart = (cartId) => {
+//     setCart((prev) => prev.filter((item) => item.cartId !== cartId));
+//   };
 
-  return (
-    <div>
-      {products.map((product) => (
-        <div key={product.id}>
-          <p>{product.name}</p>
-          <p>Price: ${product.price.toFixed(2)}</p>
-          <button onClick={() => addToCart(product)}>Add to Cart</button>
-        </div>
-      ))}
+//   return (
+//     <div>
+//       {products.map((product) => (
+//         <div key={product.id}>
+//           <p>{product.name}</p>
+//           <p>Price: ${product.price.toFixed(2)}</p>
+//           <button onClick={() => addToCart(product)}>Add to Cart</button>
+//         </div>
+//       ))}
 
-      <ShoppingCart cart={cart} onRemove={removeFromCart} />
-    </div>
-  );
-}
+//       <ShoppingCart cart={cart} onRemove={removeFromCart} />
+//     </div>
+//   );
+// }
 
-export default App;
+// export default App;
