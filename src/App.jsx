@@ -1,17 +1,16 @@
-// import ContactApp from "./ContactApp";
+import ThailWind from "./thailWind";
 import TodoApp from "./TodoApp";
 
 const App = () => {
   return (
     <div>
-      {/* <ContactApp /> */}
-      <TodoApp/>
+      {/* <ThailWind /> */}
+<TodoApp/>
     </div>
   );
 };
 
 export default App;
-
 
 // App.jsx
 // import React, { useState } from 'react';
