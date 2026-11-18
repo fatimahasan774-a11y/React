@@ -1,9 +1,11 @@
-import ContactApp from "./ContactApp";
+// import ContactApp from "./ContactApp";
+import TodoApp from "./TodoApp";
 
 const App = () => {
   return (
     <div>
-      <ContactApp />
+      {/* <ContactApp /> */}
+      <TodoApp/>
     </div>
   );
 };

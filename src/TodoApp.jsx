@@ -1,4 +1,5 @@
 import { useReducer, useState } from "react";
+import styles from "./TodoApp.module.css";
 
 const initialState = [];
 
@@ -36,28 +37,33 @@ const TodoApp = () => {
   };
 
   return (
-    <div>
-      <h2>Todo App</h2>
-      <input
-        type="text"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Enter a new todo"
-      />
-      <button onClick={handleAdd}>Add</button>
-      <ul>
+    <div className={styles.container}>
+      <h2 className={styles.title}>Todo App</h2>
+
+      <div className={styles.inputRow}>
+        <input
+          className={styles.input}
+          type="text"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Enter a new todo"
+        />
+        <button className={styles.addButton} onClick={handleAdd}>
+          Add
+        </button>
+      </div>
+
+      <ul className={styles.list}>
         {state.map((todo) => (
-          <li key={todo.id}>
+          <li key={todo.id} className={styles.item}>
             <span
-              style={{
-                textDecoration: todo.completed ? "line-through" : "none",
-                cursor: "pointer",
-              }}
+              className={`${styles.text} ${todo.completed ? styles.completed : ""}`}
               onClick={() => dispatch({ type: "toggle", payload: todo.id })}
             >
               {todo.text}
             </span>
             <button
+              className={styles.deleteButton}
               onClick={() => dispatch({ type: "delete", payload: todo.id })}
             >
               Delete
