@@ -1,70 +1,74 @@
-import useForm from "./useForm";
+import { useState, useEffect, useContext } from "react";
+import ContactContext from "./ContactContext";
+
+const emptyForm = { name: "", email: "", phone: "" };
 
 const ContactForm = () => {
-  const { values, handleChange } = useForm({
-    name: "",
-    mother: "",
-    phone: "",
-    email: "",
-  });
+  const [form, setForm] = useState(emptyForm);
+  const { state, dispatch } = useContext(ContactContext);
+  const { editingContact } = state;
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Form Data:", values);
+  // Marka Edit la riixo, form-ka ku buuxi xogta contact-ka
+  useEffect(() => {
+    if (editingContact) {
+      setForm({
+        name: editingContact.name,
+        email: editingContact.email,
+        phone: editingContact.phone,
+      });
+    } else {
+      setForm(emptyForm);
+    }
+  }, [editingContact]);
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (form.name.trim() === "") return;
+
+    if (editingContact) {
+      dispatch({
+        type: "update",
+        payload: { id: editingContact.id, ...form },
+      });
+    } else {
+      dispatch({
+        type: "add",
+        payload: { id: Date.now(), ...form, favorite: false },
+      });
+    }
+    setForm(emptyForm);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3>Custom Hook</h3>
+      <h2>{editingContact ? "Edit Contact" : "Add New Contact"}</h2>
       <div>
-        <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={values.name}
-            onChange={handleChange}
-            required
-          />
-        </label>
+        Name:
+        <input name="name" value={form.name} onChange={handleChange} />
       </div>
       <div>
-        <label>
-          Mother name:
-          <input
-            type="text"
-            name="mother"
-            value={values.mother}
-            onChange={handleChange}
-            required
-          />
-        </label>
+        Email:
+        <input
+          type="email"
+          name="email"
+          value={form.email}
+          onChange={handleChange}
+        />
       </div>
       <div>
-        <label>
-          Phone:
-          <input
-            type="text"
-            name="phone"
-            value={values.phone}
-            onChange={handleChange}
-            required
-          />
-        </label>
+        Phone:
+        <input name="phone" value={form.phone} onChange={handleChange} />
       </div>
-      <div>
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={values.email}
-            onChange={handleChange}
-            required
-          />
-        </label>
-      </div>
-      <button type="submit">Submit</button>
+      <button type="submit">{editingContact ? "Update" : "Add"}</button>
+      {editingContact && (
+        <button type="button" onClick={() => dispatch({ type: "cancelEdit" })}>
+          Cancel
+        </button>
+      )}
     </form>
   );
 };

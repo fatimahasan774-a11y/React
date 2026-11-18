@@ -1,15 +1,14 @@
-import ContactForm from "./contactForm";
+import ContactApp from "./ContactApp";
 
 const App = () => {
   return (
-    <>
-      <ContactForm />
-    </>
+    <div>
+      <ContactApp />
+    </div>
   );
 };
 
 export default App;
-
 
 
 // App.jsx
