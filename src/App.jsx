@@ -1,11 +1,13 @@
 import ThailWind from "./thailWind";
-import TodoApp from "./TodoApp";
+// import TodoApp from "./TodoApp";
+import Dashboard from "./Dashboard";
 
 const App = () => {
   return (
     <div>
       {/* <ThailWind /> */}
-<TodoApp/>
+{/* <TodoApp/> */}
+<Dashboard/>
     </div>
   );
 };
